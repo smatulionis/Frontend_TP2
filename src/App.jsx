@@ -45,7 +45,7 @@ const teamMembers = [
 ];
 
 const sebastianMatulionisSkills = [
-  { name: "HTML semantico", level: 92, note: "Estructuras claras y accesibles." },
+  { name: "HTML semántico", level: 92, note: "Estructuras claras y accesibles." },
   { name: "CSS responsive", level: 88, note: "Layouts flexibles y consistentes." },
   { name: "JavaScript", level: 76, note: "Interactividad y logica de interfaz." },
   { name: "Git / GitHub", level: 74, note: "Versionado y trabajo colaborativo." },
