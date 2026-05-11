@@ -1,0 +1,20 @@
+{
+  "name": "tp2-react-migration",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/vite-proxy.mjs",
+    "build": "node scripts/vite-proxy.mjs build",
+    "preview": "node scripts/vite-proxy.mjs preview"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.28.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.10"
+  }
+}
