@@ -47,29 +47,29 @@ const teamMembers = [
 const sebastianMatulionisSkills = [
   { name: "HTML semántico", level: 92, note: "Estructuras claras y accesibles." },
   { name: "CSS responsive", level: 88, note: "Layouts flexibles y consistentes." },
-  { name: "JavaScript", level: 76, note: "Interactividad y logica de interfaz." },
+  { name: "JavaScript", level: 76, note: "Interactividad y lógica de interfaz." },
   { name: "Git / GitHub", level: 74, note: "Versionado y trabajo colaborativo." },
-  { name: "React", level: 62, note: "Componentes y navegacion SPA." },
+  { name: "React", level: 62, note: "Componentes y navegación SPA." },
 ];
 
 const sebastianMatulionisProjects = [
   {
-    title: "Landing de presentacion",
-    summary: "Maqueta centrada en contenido visual, bloques destacados y jerarquia tipografica.",
+    title: "Landing de presentación",
+    summary: "Maqueta centrada en contenido visual, bloques destacados y jerarquía tipográfica.",
     stack: ["HTML", "CSS", "Responsive"],
-    focus: "Trabaje en la organizacion de secciones y en una experiencia de lectura mas clara.",
+    focus: "Trabaje en la organización de secciones y en una experiencia de lectura más clara.",
   },
   {
-    title: "Dashboard academico",
-    summary: "Interfaz con tarjetas, sidebar y rutas internas para ordenar la informacion del equipo.",
+    title: "Dashboard académico",
+    summary: "Interfaz con tarjetas, sidebar y rutas internas para ordenar la información del equipo.",
     stack: ["React", "React Router", "CSS"],
-    focus: "Me enfoque en transformar contenido estatico en una navegacion mas intuitiva.",
+    focus: "Me enfoque en transformar contenido estático en una navegación más intuitiva.",
   },
   {
-    title: "Bitacora interactiva",
+    title: "Bitácora interactiva",
     summary: "Registro visual del avance del proyecto con bloques reutilizables y mejor lectura.",
     stack: ["JavaScript", "UI", "Componentes"],
-    focus: "Busque que la documentacion del proceso se vea mas dinamica y facil de seguir.",
+    focus: "Busqué que la documentación del proceso se vea más dinámica y fácil de seguir.",
   },
 ];
 
@@ -253,10 +253,10 @@ function BitacoraPage() {
   return (
     <section className="page">
       <header className="page-hero">
-        <span className="page-kicker">Bitacora</span>
+        <span className="page-kicker">Bitácora</span>
         <h1>Continuidad del proceso</h1>
         <p>
-          Esta bitacora retoma el registro del TP1 y lo sigue ampliando durante la migracion a React.
+          Esta bitácora retoma el registro del TP1 y lo sigue ampliando durante la migración a React.
           El objetivo es dejar documentado el recorrido completo: decisiones, problemas, resoluciones y
           cambios de rumbo que fueron dando forma al proyecto.
         </p>
@@ -266,33 +266,33 @@ function BitacoraPage() {
         <article className="surface-card">
           <h2>Base heredada</h2>
           <p>
-            El TP1 partia de una portada, una bitacora central y paginas individuales para cada
+            El TP1 partía de una portada, una bitácora central y páginas individuales para cada
             integrante. Esa estructura se mantiene como punto de partida para no perder continuidad
             entre etapas.
           </p>
         </article>
 
         <article className="surface-card">
-          <h2>Primera decision de TP2</h2>
+          <h2>Primera decisión de TP2</h2>
           <p>
-            La nueva navegacion se organizo con una Sidebar fija tipo dashboard para convertir la
-            estructura anterior en una SPA mas clara, jerarquizada y preparada para escalar.
+            La nueva navegación se organizó con una Sidebar fija tipo dashboard para convertir la
+            estructura anterior en una SPA más clara, jerarquizada y preparada para escalar.
           </p>
         </article>
 
         <article className="surface-card">
           <h2>Dificultad detectada</h2>
           <p>
-            El desafio principal fue traducir la experiencia estatica a una arquitectura de
+            El desafío principal fue traducir la experiencia estática a una arquitectura de
             componentes sin romper el recorrido del usuario ni perder la identidad visual del grupo.
           </p>
         </article>
 
         <article className="surface-card">
-          <h2>Resolucion aplicada</h2>
+          <h2>Resolución aplicada</h2>
           <p>
-            Se definio una base React con rutas para la portada, la bitacora y cada integrante. De
-            este modo, la migracion no borra el TP1, sino que lo reorganiza sobre una estructura mas
+            Se definió una base React con rutas para la portada, la bitácora y cada integrante. De
+            este modo, la migración no borra el TP1, sino que lo reorganiza sobre una estructura más
             flexible.
           </p>
         </article>
@@ -322,7 +322,7 @@ function TeamPage() {
             <div className="member-copy">
               <h2>{member.name}</h2>
               <p>{member.role}</p>
-              <span>Ver pagina individual</span>
+              <span>Ver página individual</span>
             </div>
           </NavLink>
         ))}
