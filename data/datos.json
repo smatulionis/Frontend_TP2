@@ -1,0 +1,142 @@
+[
+  {
+    "id": 1,
+    "titulo": "Rocks",
+    "artista": "Aerosmith",
+    "genero": "Hard Rock",
+    "lanzamiento": 1976
+  },
+  {
+    "id": 2,
+    "titulo": "Honestidad Brutal",
+    "artista": "Andrés Calamaro",
+    "genero": "Rock Nacional",
+    "lanzamiento": 1999
+  },
+  {
+    "id": 3,
+    "titulo": "Toys in the Attic",
+    "artista": "Aerosmith",
+    "genero": "Hard Rock",
+    "lanzamiento": 1975
+  },
+  {
+    "id": 4,
+    "titulo": "Born This Way",
+    "artista": "Lady Gaga",
+    "genero": "Pop",
+    "lanzamiento": 2011
+  },
+  {
+    "id": 5,
+    "titulo": "Future Nostalgia",
+    "artista": "Dua Lipa",
+    "genero": "Synth-Pop",
+    "lanzamiento": 2020
+  },
+  {
+    "id": 6,
+    "titulo": "Confessions on a Dance Floor",
+    "artista": "Madonna",
+    "genero": "Pop / Dance",
+    "lanzamiento": 2005
+  },
+  {
+    "id": 7,
+    "titulo": "Mediterráneo",
+    "artista": "Joan Manuel Serrat",
+    "genero": "Cantautor / Trova",
+    "lanzamiento": 1971
+  },
+  {
+    "id": 8,
+    "titulo": "¿Dónde están los ladrones?",
+    "artista": "Shakira",
+    "genero": "Pop Latino",
+    "lanzamiento": 1998
+  },
+  {
+    "id": 9,
+    "titulo": "Vasos vacíos",
+    "artista": "Los Fabulosos Cadillacs",
+    "genero": "Ska / Rock Latino",
+    "lanzamiento": 1993
+  },
+  {
+    "id": 10,
+    "titulo": "Meteora",
+    "artista": "Linkin Park",
+    "genero": "Nu Metal",
+    "lanzamiento": 2003
+  },
+  {
+    "id": 11,
+    "titulo": "(What's The Story) Morning Glory?",
+    "artista": "Oasis",
+    "genero": "Britpop",
+    "lanzamiento": 1995
+  },
+  {
+    "id": 12,
+    "titulo": "Hopes And Fears",
+    "artista": "Keane",
+    "genero": "Piano Rock",
+    "lanzamiento": 2004
+  },
+  {
+    "id": 13,
+    "titulo": "El Amor Después del Amor",
+    "artista": "Fito Páez",
+    "genero": "Rock Nacional",
+    "lanzamiento": 1992
+  },
+  {
+    "id": 14,
+    "titulo": "Bocanada",
+    "artista": "Gustavo Cerati",
+    "genero": "Rock Alternativo / Electrónica",
+    "lanzamiento": 1999
+  },
+  {
+    "id": 15,
+    "titulo": "Clics Modernos",
+    "artista": "Charly García",
+    "genero": "Pop Rock",
+    "lanzamiento": 1983
+  },
+  {
+    "id": 16,
+    "titulo": "Rumours",
+    "artista": "Fleetwood Mac",
+    "genero": "Soft Rock",
+    "lanzamiento": 1977
+  },
+  {
+    "id": 17,
+    "titulo": "Back to Black",
+    "artista": "Amy Winehouse",
+    "genero": "Soul / R&B",
+    "lanzamiento": 2006
+  },
+  {
+    "id": 18,
+    "titulo": "Random Access Memories",
+    "artista": "Daft Punk",
+    "genero": "Música Electrónica",
+    "lanzamiento": 2013
+  },
+  {
+    "id": 19,
+    "titulo": "Thriller",
+    "artista": "Michael Jackson",
+    "genero": "Pop",
+    "lanzamiento": 1982
+  },
+  {
+    "id": 20,
+    "titulo": "Abbey Road",
+    "artista": "The Beatles",
+    "genero": "Classic Rock",
+    "lanzamiento": 1969
+  }
+]
