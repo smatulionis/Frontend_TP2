@@ -8,7 +8,7 @@ const teamMembers = [
     name: "Sebastián Vitcop",
     role: "Frontend Dev",
     description: "Especializado en estructura visual, base semantica y composicion de interfaces.",
-    avatar: "/img/fotosebasV.png",
+    avatar: "/img/sebastianvit_funko.png",
     accent: "var(--accent-sky)",
     initials: "SV",
     page: "vitcop",
@@ -18,7 +18,7 @@ const teamMembers = [
     name: "Sebastián Matulionis",
     role: "Frontend Developer",
     description: "Enfocado en UI, organizacion de contenido y mejoras de experiencia de usuario.",
-    avatar: "/img/avatar_sebastian.png",
+    avatar: "/img/sebastianmatu_funko.png",
     accent: "var(--accent-mint)",
     initials: "SM",
     page: "matulionis",
@@ -28,7 +28,7 @@ const teamMembers = [
     name: "Melody Amaro",
     role: "Desarrollo web",
     description: "Aporta criterio visual, interactividad y una mirada sensible sobre la narrativa del sitio.",
-    avatar: "/img/melody-avatar.png",
+    avatar: "/img/melody_funko.png",
     accent: "var(--accent-peach)",
     initials: "MA",
     page: "melody",
@@ -38,7 +38,7 @@ const teamMembers = [
     name: "Lucrecia Vigo",
     role: "Backend Developer",
     description: "Suma organización, contenido personal y una propuesta interactiva para su pagina propia.",
-    avatar: "/img/avatar_lucrecia.png",
+    avatar: "/img/lucrecia_funko.png",
     accent: "var(--accent-lilac)",
     initials: "LV",
     page: "lucrecia",
@@ -168,6 +168,35 @@ const lucreciaMoodData = {
   },
 };
 
+const mysteryBoxPrizes = [
+  "HTML Master",
+  "CSS Wizard",
+  "React Hero",
+  "Git Guardian",
+  "Frontend Legend",
+  "JavaScript Ninja",
+];
+
+function getFunkoRarity(level) {
+  if (level >= 90) {
+    return { label: "Legendary", stars: "⭐⭐⭐⭐", tone: "legendary" };
+  }
+
+  if (level >= 75) {
+    return { label: "Epic", stars: "⭐⭐⭐", tone: "epic" };
+  }
+
+  if (level >= 60) {
+    return { label: "Rare", stars: "⭐⭐", tone: "rare" };
+  }
+
+  return { label: "Common", stars: "⭐", tone: "common" };
+}
+
+function formatFunkoNumber(index) {
+  return `FUNKO #${String(index + 1).padStart(3, "0")}`;
+}
+
 function App() {
   return (
     <Routes>
@@ -201,30 +230,30 @@ function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
-        <div className="sidebar-logo" aria-hidden="true">
-          G6
+        <div className="sidebar-logo sidebar-logo--pop" aria-hidden="true">
+          POP!
         </div>
         <div className="sidebar-brand-copy">
-          <span className="sidebar-eyebrow">TP2 React</span>
-          <strong>Grupo 6</strong>
+          <span className="sidebar-eyebrow">Coleccion React</span>
+          <strong>Funko Universe</strong>
         </div>
       </div>
 
       <nav className="sidebar-nav" aria-label="Navegacion principal">
         <div className="sidebar-section">
-          <span className="sidebar-section-label">General</span>
+          <span className="sidebar-section-label">Catalogo</span>
           <NavItem to="/" end>
-            Portada
+            Portada principal
           </NavItem>
-          <NavItem to="/bitacora">Bitacora</NavItem>
-          <NavItem to="/explorador">Explorador JSON</NavItem>
-          <NavItem to="/biblioteca">Biblioteca API</NavItem>
-          <NavItem to="/galeria">Galería Interactiva</NavItem>
-          <NavItem to="/arbol">Árbol de Renderizado</NavItem>
+          <NavItem to="/bitacora">Bitacora geek</NavItem>
+          <NavItem to="/explorador">Explorador de discos</NavItem>
+          <NavItem to="/biblioteca">Caja sorpresa API</NavItem>
+          <NavItem to="/galeria">Galeria coleccionable</NavItem>
+          <NavItem to="/arbol">Arbol de render</NavItem>
         </div>
 
         <div className="sidebar-section">
-          <span className="sidebar-section-label">Integrantes</span>
+          <span className="sidebar-section-label">Figuras</span>
           <div className="sidebar-submenu" aria-label="Paginas individuales">
             {teamMembers.map((member) => (
               <NavItem key={member.slug} to={`/integrantes/${member.slug}`}>
@@ -251,20 +280,20 @@ function HomePage() {
     <section className="page page-home">
       <header className="page-hero page-hero--home">
         <div className="hero-copy">
-          <span className="page-kicker">Tecnicatura en Desarrollo de Software</span>
-          <h1>Equipo N 6</h1>
+          <span className="page-kicker">Funko Universe</span>
+          <h1>🎉 FUNKO COLLECTOR TEAM 🎉</h1>
           <p>
-            Somos un grupo de estudiantes enfocados en crear interfaces claras, humanas y bien
-            organizadas con HTML y CSS. Este proyecto reúne perfiles distintos dentro de una misma
-            identidad visual.
+            Bienvenido a la colección oficial del Grupo 6.
+            Cada integrante es una edición especial con habilidades,
+            intereses y características únicas.
           </p>
         </div>
       </header>
 
       <section className="home-section" aria-labelledby="home-team-title">
         <div className="section-heading">
-          <span className="section-kicker">Nuestro Equipo</span>
-          <h2 id="home-team-title">Nuestro Equipo</h2>
+          <span className="section-kicker">Edicion limitada</span>
+          <h2 id="home-team-title">Nuestra coleccion</h2>
         </div>
 
         <div className="home-team-grid">
@@ -275,13 +304,18 @@ function HomePage() {
               className="home-member-card"
               style={{ "--card-delay": `${index * 90}ms` }}
             >
+              <div className="funko-box-top" aria-hidden="true">
+                <span className="funko-box-brand">Funko</span>
+                <span className="funko-box-number">{formatFunkoNumber(index)}</span>
+              </div>
               <div className="home-member-avatar-wrap" aria-hidden="true">
+                <span className="pop-sticker">POP!</span>
                 <img src={member.avatar} alt="" className="home-member-avatar" />
               </div>
               <div className="home-member-copy">
                 <h3>{member.name}</h3>
                 <p>{member.role}</p>
-                <span>Ver pagina individual</span>
+                <span>Ver figura completa</span>
               </div>
             </Link>
           ))}
@@ -812,7 +846,7 @@ function TeamPage() {
     <section className="page">
       <header className="page-hero">
         <span className="page-kicker">Integrantes</span>
-        <h1>Listado del equipo</h1>
+        <h1>Colección Oficial</h1>
         <p>
           Desde esta vista se accede a cada pagina individual de forma clara, consistente y preparada
           para seguir ampliandose.
@@ -820,10 +854,15 @@ function TeamPage() {
       </header>
 
       <div className="team-grid">
-        {teamMembers.map((member) => (
+        {teamMembers.map((member, index) => (
           <NavLink key={member.slug} to={`/integrantes/${member.slug}`} className="member-card">
+            <div className="funko-box-top" aria-hidden="true">
+              <span className="funko-box-brand">Funko</span>
+              <span className="funko-box-number">{formatFunkoNumber(index)}</span>
+            </div>
             <div className="member-avatar" style={{ background: member.accent }}>
-              {member.initials}
+              <img src={member.avatar} alt="" aria-hidden="true" className="member-avatar-image" />
+              <span className="pop-sticker">POP!</span>
             </div>
             <div className="member-copy">
               <h2>{member.name}</h2>
@@ -833,6 +872,8 @@ function TeamPage() {
           </NavLink>
         ))}
       </div>
+
+      <MysteryBox />
     </section>
   );
 }
@@ -1030,13 +1071,9 @@ function SebastianMatulionisPage({ member }) {
                     <h3>{skill.name}</h3>
                     <p>{skill.note}</p>
                   </div>
-                  <strong>{skill.level}%</strong>
-                </div>
-                <div className="skill-bar-track" aria-hidden="true">
-                  <span
-                    className="skill-bar-fill"
-                    style={{ "--skill-level": `${skill.level}%` }}
-                  />
+                  <strong className={`rarity-badge rarity-badge--${getFunkoRarity(skill.level).tone}`}>
+                    {getFunkoRarity(skill.level).stars} {getFunkoRarity(skill.level).label}
+                  </strong>
                 </div>
               </article>
             ))}
@@ -1277,13 +1314,9 @@ function LucreciaPage({ member }) {
                     <h3>{skill.name}</h3>
                     <p>{skill.note}</p>
                   </div>
-                  <strong>{skill.level}%</strong>
-                </div>
-                <div className="skill-bar-track" aria-hidden="true">
-                  <span
-                    className="skill-bar-fill"
-                    style={{ "--skill-level": `${skill.level}%` }}
-                  />
+                  <strong className={`rarity-badge rarity-badge--${getFunkoRarity(skill.level).tone}`}>
+                    {getFunkoRarity(skill.level).stars} {getFunkoRarity(skill.level).label}
+                  </strong>
                 </div>
               </article>
             ))}
@@ -1448,6 +1481,31 @@ function LucreciaPage({ member }) {
         ) : null}
       </article>
     </PageShell>
+  );
+}
+
+function MysteryBox() {
+  const [reward, setReward] = useState("");
+
+  function openMysteryBox() {
+    const randomIndex = Math.floor(Math.random() * mysteryBoxPrizes.length);
+    setReward(mysteryBoxPrizes[randomIndex]);
+  }
+
+  return (
+    <article className="surface-card mystery-box-card">
+      <h2>Mystery Box</h2>
+      <p>Abre la caja sorpresa y descubre qué habilidad coleccionable te toca hoy.</p>
+      <button type="button" className="mystery-box-btn" onClick={openMysteryBox}>
+        Abrir Caja Sorpresa
+      </button>
+      {reward ? (
+        <div className="mystery-box-reward" aria-live="polite">
+          <span>Premio obtenido</span>
+          <strong>{reward}</strong>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
