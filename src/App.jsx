@@ -287,17 +287,6 @@ function HomePage() {
           ))}
         </div>
 
-        <div className="content-grid home-info-grid">
-          <article className="surface-card">
-            <h2>Enfoque</h2>
-            <p>Diseño de interfaces, estructura semántica y presentaciones personales.</p>
-          </article>
-
-          <article className="surface-card">
-            <h2>Herramientas</h2>
-            <p>HTML, CSS y JavaScript aplicado con una base visual compartida.</p>
-          </article>
-        </div>
       </section>
     </section>
   );
@@ -310,9 +299,10 @@ function BitacoraPage() {
         <span className="page-kicker">Bitácora</span>
         <h1>Continuidad del proceso</h1>
         <p>
-          Esta bitácora retoma el registro del TP1 y lo sigue ampliando durante la migración a React.
-          El objetivo es dejar documentado el recorrido completo: decisiones, problemas, resoluciones y
-          cambios de rumbo que fueron dando forma al proyecto.
+          Esta bitácora retoma el registro del TP1 y lo amplía durante la migración a React. El
+          objetivo es dejar documentado el recorrido completo: cómo se repartieron los roles, cómo
+          se organizó el trabajo en equipo y de qué manera la estructura estática fue convirtiéndose
+          en una aplicación modular con navegación por rutas.
         </p>
       </header>
 
@@ -321,33 +311,43 @@ function BitacoraPage() {
           <h2>Base heredada</h2>
           <p>
             El TP1 partía de una portada, una bitácora central y páginas individuales para cada
-            integrante. Esa estructura se mantiene como punto de partida para no perder continuidad
-            entre etapas.
+            integrante. Esa base estática en HTML y JS simple se tomó como punto de partida para no
+            perder continuidad entre etapas. En esta nueva versión se respetó esa idea original, pero
+            se reorganizó para que el contenido pudiera crecer sin repetir estructuras ni depender de
+            archivos aislados para cada sección.
           </p>
         </article>
 
         <article className="surface-card">
-          <h2>Primera decisión de TP2</h2>
+          <h2>Roles y flujo de trabajo</h2>
           <p>
-            La nueva navegación se organizó con una Sidebar fija tipo dashboard para convertir la
-            estructura anterior en una SPA más clara, jerarquizada y preparada para escalar.
+            Para ordenar el trabajo se usó Trello como tablero central de seguimiento. Allí se
+            repartieron las tareas por integrante, se marcaron prioridades y se fue registrando qué
+            quedaba pendiente, qué estaba en progreso y qué ya podía integrarse al proyecto. En la
+            práctica, cada integrante pudo concentrarse en una parte concreta: estructura general,
+            páginas individuales, estilo visual, contenido o navegación.
           </p>
         </article>
 
         <article className="surface-card">
-          <h2>Dificultad detectada</h2>
+          <h2>De lo estático a React</h2>
           <p>
-            El desafío principal fue traducir la experiencia estática a una arquitectura de
-            componentes sin romper el recorrido del usuario ni perder la identidad visual del grupo.
+            La migración empezó por identificar patrones repetidos en la versión original: cabeceras,
+            tarjetas, enlaces y secciones similares que se copiaban entre páginas. React permitió
+            separar esos bloques en componentes reutilizables y llevar la navegación a una SPA con
+            rutas, lo que simplificó el mantenimiento y dio una estructura más clara para mostrar la
+            información del grupo.
           </p>
         </article>
 
         <article className="surface-card">
-          <h2>Resolución aplicada</h2>
+          <h2>Evolución técnica</h2>
           <p>
-            Se definió una base React con rutas para la portada, la bitácora y cada integrante. De
-            este modo, la migración no borra el TP1, sino que lo reorganiza sobre una estructura más
-            flexible.
+            El paso a React también ayudó a ordenar mejor la lógica del proyecto. La portada dejó de
+            depender de archivos sueltos y pasó a convivir con una base común de layout, sidebar y
+            rutas internas. Eso hizo posible conservar la identidad visual del TP1, pero con una
+            arquitectura más limpia, más fácil de extender y más adecuada para seguir sumando
+            contenido en futuras entregas.
           </p>
         </article>
       </div>
