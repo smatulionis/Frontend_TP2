@@ -220,21 +220,21 @@ const melodySocialLinks = [
   {
     label: "GitHub",
     handle: "@melodyamaro",
-    href: "#",
+    href: "https://github.com/melodyamaro/",
     tone: "sky",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
   },
   {
     label: "LinkedIn",
     handle: "Perfil profesional",
-    href: "#",
+    href: "https://www.linkedin.com/",
     tone: "mint",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
   },
   {
     label: "Instagram",
     handle: "@melody.dev",
-    href: "#",
+    href: "https://www.instagram.com/",
     tone: "peach",
     icon: "/img/social/instagram.svg",
   },
@@ -1490,8 +1490,10 @@ function PageShell({ member, kicker, title, tagline, children, className = "" })
       <header className="page-hero member-hero">
         <span className="page-kicker">{kicker}</span>
         <div className="member-hero-top">
-          <img src={member.avatar} alt="" aria-hidden="true" className="member-hero-avatar" />
-          <div>
+          <div className="member-hero-avatar-wrap">
+            <img src={member.avatar} alt="" aria-hidden="true" className="member-hero-avatar" />
+          </div>
+          <div className="member-hero-copy">
             <h1>{title}</h1>
             <p>{tagline}</p>
           </div>

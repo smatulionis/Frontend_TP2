@@ -594,18 +594,41 @@ textarea {
 
 .member-hero-top {
   display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 24px;
   align-items: center;
 }
 
+.member-hero-avatar-wrap {
+  width: 280px;
+  height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-radius: 30px;
+  background:
+    linear-gradient(145deg, rgba(255, 79, 163, 0.22), rgba(0, 216, 255, 0.18)),
+    #1b2238;
+  border: 4px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, 0.1),
+    0 20px 44px rgba(0, 0, 0, 0.32);
+}
+
 .member-hero-avatar {
-  width: 180px;
-  height: 180px;
-  border-radius: 26px;
-  object-fit: cover;
-  object-position: center top;
-  box-shadow: 0 18px 40px rgba(83, 69, 65, 0.14);
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  filter: drop-shadow(0 16px 22px rgba(0, 0, 0, 0.35));
+}
+
+.member-hero-copy {
+  min-width: 0;
 }
 
 .member-hero h1 {
@@ -1209,8 +1232,7 @@ textarea {
   border: 3px solid rgba(255, 255, 255, 0.12);
 }
 
-.home-member-avatar-wrap,
-.member-hero-avatar {
+.home-member-avatar-wrap {
   border: 3px solid rgba(255, 255, 255, 0.14);
   box-shadow:
     0 0 0 4px rgba(255, 255, 255, 0.08),
@@ -1278,12 +1300,13 @@ textarea {
 
 @media (max-width: 900px) {
   .member-hero-top {
-    grid-template-columns: 120px minmax(0, 1fr);
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 18px;
   }
 
-  .member-hero-avatar {
-    width: 120px;
-    height: 120px;
+  .member-hero-avatar-wrap {
+    width: 220px;
+    height: 240px;
   }
 }
 
@@ -1600,9 +1623,10 @@ textarea {
     text-align: center;
   }
 
-  .member-hero-avatar {
-    width: 140px;
-    height: 140px;
+  .member-hero-avatar-wrap {
+    width: min(100%, 280px);
+    height: 300px;
+    margin: 0 auto;
   }
 
   .member-hero p {
