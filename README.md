@@ -227,7 +227,7 @@ Los avatares Funko de los integrantes fueron generados con **ChatGPT** a partir 
 
 Prompt utilizado como base:
 
-> "Generá cuatro avatares estilo Funko Pop, tomando como referencia las siguientes imagenes, con estética colorida, fondo simple y rasgos diferenciados. Cada personaje debe verse como una figura de colección y vestimenta inspirada en un perfil tecnológico"
+> "Generá cuatro avatares estilo Funko Pop, tomando como referencia las siguientes imágenes, con estética colorida, fondo simple y rasgos diferenciados. Cada personaje debe verse como una figura de colección y vestimenta inspirada en un perfil tecnológico"
 
 Luego se adaptaron los archivos para que encajaran con la identidad visual de la portada y las páginas individuales del proyecto.
 
