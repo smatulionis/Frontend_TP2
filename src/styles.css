@@ -2517,6 +2517,14 @@ button:disabled {
   right: max(12px, env(safe-area-inset-right, 0px));
 }
 
+.api-loading-hint {
+  margin: 0;
+  padding: 24px 12px;
+  text-align: center;
+  color: var(--muted);
+  font-weight: 600;
+}
+
 .api-pagination {
   display: inline-flex;
   flex-wrap: wrap;

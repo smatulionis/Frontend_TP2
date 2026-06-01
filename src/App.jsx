@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { createContext, useCallback, useContext, useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import {
   Link,
@@ -364,32 +364,102 @@ function AppLoader() {
   );
 }
 
-function App() {
-  const [isLoading, setIsLoading] = useState(true);
+const PAGE_LOADER_SHOW_DELAY_MS = 200;
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 1800);
-    return () => clearTimeout(timer);
-  }, []);
+const PageLoaderContext = createContext(null);
 
-  if (isLoading) {
-    return <AppLoader />;
+function usePageLoader() {
+  const context = useContext(PageLoaderContext);
+
+  if (!context) {
+    throw new Error("usePageLoader debe usarse dentro de PageLoaderProvider");
   }
 
+  return context;
+}
+
+function PageLoaderProvider({ children }) {
+  const [visible, setVisible] = useState(false);
+  const pendingCountRef = useRef(0);
+  const showTimerRef = useRef(null);
+
+  const showPageLoader = useCallback(() => {
+    pendingCountRef.current += 1;
+
+    if (showTimerRef.current !== null) {
+      return;
+    }
+
+    showTimerRef.current = window.setTimeout(() => {
+      showTimerRef.current = null;
+
+      if (pendingCountRef.current > 0) {
+        setVisible(true);
+      }
+    }, PAGE_LOADER_SHOW_DELAY_MS);
+  }, []);
+
+  const hidePageLoader = useCallback(() => {
+    pendingCountRef.current = Math.max(0, pendingCountRef.current - 1);
+
+    if (pendingCountRef.current > 0) {
+      return;
+    }
+
+    if (showTimerRef.current !== null) {
+      window.clearTimeout(showTimerRef.current);
+      showTimerRef.current = null;
+    }
+
+    setVisible(false);
+  }, []);
+
+  useEffect(() => {
+    if (!visible) {
+      return undefined;
+    }
+
+    document.body.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [visible]);
+
+  useEffect(
+    () => () => {
+      if (showTimerRef.current !== null) {
+        window.clearTimeout(showTimerRef.current);
+      }
+    },
+    [],
+  );
+
   return (
-    <Routes>
-      <Route element={<DashboardLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="bitacora" element={<BitacoraPage />} />
-        <Route path="integrantes" element={<TeamPage />} />
-        <Route path="integrantes/:slug" element={<MemberPage />} />
-        <Route path="explorador" element={<ExploradorPage />} />
-        <Route path="biblioteca" element={<ApiPage />} />
-        <Route path="galeria" element={<GaleriaPage />} />
-        <Route path="arbol" element={<ArbolPage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Route>
-    </Routes>
+    <PageLoaderContext.Provider value={{ showPageLoader, hidePageLoader }}>
+      {visible ? createPortal(<AppLoader />, document.body) : null}
+      {children}
+    </PageLoaderContext.Provider>
+  );
+}
+
+function App() {
+  return (
+    <PageLoaderProvider>
+      <Routes>
+        <Route element={<DashboardLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="bitacora" element={<BitacoraPage />} />
+          <Route path="integrantes" element={<TeamPage />} />
+          <Route path="integrantes/:slug" element={<MemberPage />} />
+          <Route path="explorador" element={<ExploradorPage />} />
+          <Route path="biblioteca" element={<ApiPage />} />
+          <Route path="galeria" element={<GaleriaPage />} />
+          <Route path="arbol" element={<ArbolPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </PageLoaderProvider>
   );
 }
 
@@ -589,10 +659,10 @@ const bitacoraTimeline = [
     title: "Roles y flujo de trabajo",
     highlights: [
       "Trello para tareas, prioridades y estado (pendiente / en progreso / listo).",
-      "GitFlow: main estable, develop de integración y ramas feature por módulo.",
+      "Repositorio en GitHub para versionado y trabajo colaborativo del equipo.",
       "Cada integrante con foco: layout, perfiles, estilos, contenido o rutas.",
     ],
-    tags: ["Trello", "GitFlow", "GitHub"],
+    tags: ["Trello", "GitHub"],
   },
   {
     phase: "Migración",
@@ -822,6 +892,7 @@ async function fetchRickMortyPagina(pagina, { signal } = {}) {
 }
 
 function ApiPage() {
+  const { showPageLoader, hidePageLoader } = usePageLoader();
   const [personajes, setPersonajes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -829,6 +900,16 @@ function ApiPage() {
   const [totalPaginas, setTotalPaginas] = useState(0);
   const [haySiguiente, setHaySiguiente] = useState(true);
   const [reloadToken, setReloadToken] = useState(0);
+
+  useEffect(() => {
+    if (loading) {
+      showPageLoader();
+      return hidePageLoader;
+    }
+
+    hidePageLoader();
+    return undefined;
+  }, [loading, showPageLoader, hidePageLoader]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -943,9 +1024,7 @@ function ApiPage() {
 
           {/* Manejo de Estados */}
           {loading ? (
-            <div style={{ textAlign: "center", padding: "40px" }}>
-              <h3>Cargando información... ⏳</h3>
-            </div>
+            <p className="api-loading-hint">Obteniendo personajes desde la API…</p>
           ) : error ? (
             <div className="api-error-panel">
               <h3>Error: {error}</h3>

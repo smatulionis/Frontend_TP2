@@ -33,7 +33,7 @@ Este trabajo práctico corresponde a la materia Frontend de la Tecnicatura Super
 - **Rick & Morty API** — API externa pública para el módulo de personajes
 - **Lorem Picsum** — imágenes para la galería interactiva
 - **Devicons CDN** — iconografía del tech stack de cada integrante
-- **Git / GitHub** — control de versiones y GitFlow
+- **Git / GitHub** — control de versiones y trabajo colaborativo
 - **Vercel** — plataforma de deploy
 
 ---
@@ -102,10 +102,13 @@ https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=sw
 ## Componentes React Clave
 
 ### `App` (raíz)
-Controla el estado de carga inicial (`isLoading`). Muestra `AppLoader` (animación de entrada con logo Funky) durante 1800 ms y luego renderiza el árbol de rutas.
+Renderiza el árbol de rutas dentro de `PageLoaderProvider`, que muestra `AppLoader` solo cuando una vista lo pide por carga real (por ejemplo, fetch a la API).
 
 ### `DashboardLayout`
-Layout principal envuelve a todos las páginas vía `Outlet`. Gestiona el estado del menú móvil (`menuOpen`), aplica la clase `is-menu-open`, bloquea el scroll al abrir y cierra con tecla ESC.
+Layout principal envuelve a todas las páginas vía `Outlet`. Gestiona el menú móvil (`menuOpen`), bloquea el scroll al abrir y cierra con tecla ESC.
+
+### `PageLoaderProvider` + `AppLoader`
+Loader global (logo + **"Cargando"**) solo si una pantalla lo activa con `showPageLoader()` mientras hay espera real (p. ej. petición a la API). Si la respuesta es inmediata (caché) o tarda menos de 200 ms, no se muestra para no molestar al usuario.
 
 ### `Sidebar` + `NavItem`
 Sidebar fija con logo, sección "Catálogo" (rutas globales) y sección "Figuras" (rutas de integrantes generadas dinámicamente desde `teamMembers`). `NavItem` aplica la clase `is-active` con `NavLink`.
@@ -187,7 +190,7 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 | **6c** | Navegación interna en Lightbox | ✅ Cumplido | Botones Anterior/Siguiente dentro del lightbox |
 | **6d** | Cierre con tecla ESC | ✅ Cumplido | `keydown` listener con cleanup correcto |
 | **7** | **Sección Bitácora** | ✅ Cumplido | `BitacoraPage` — timeline de 4 fases del proyecto |
-| **7a** | Documentación de roles y flujo (GitFlow/Trello) | ⚠️ Parcial | El timeline menciona Trello y GitFlow pero sin detalle de roles individuales por integrante |
+| **7a** | Documentación de roles y flujo de trabajo | ⚠️ Parcial | Timeline con Trello y GitHub; sin detalle de roles individuales por integrante |
 | **7b** | Justificación de migración HTML → React | ✅ Cumplido | Fase "De lo estático a React" con comparativa técnica |
 | **8** | **Árbol de Renderizado** | ✅ Cumplido | `ArbolPage` con SVG interactivo + zoom y scroll |
 | **8a** | Componente raíz visible (App) | ✅ Cumplido | Nodo `App` como raíz del diagrama SVG |
@@ -210,26 +213,53 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 
 ---
 
-### Uso Inteligencia Artificial
+### Uso de inteligencia artificial
 
-Durante la migración a React se utilizó **Chatgpt** como asistente de desarrollo para acelerar tareas puntuales y destrabar problemas técnicos, especialmente en la reorganización del código desde la versión original en HTML/CSS/JS hacia una arquitectura por componentes.
+#### Equipo — [Cursor](https://cursor.com/)
+
+Se utilizó **Cursor** como entorno de desarrollo con asistente de IA integrado.
+
+| Concepto | Detalle |
+|---|---|
+| **Herramienta** | Cursor (IDE con agente de código) |
+| **Modelo de IA** | **Claude Opus 4.8** de Anthropic — en Cursor se selecciona como agente de razonamiento (*Claude Opus 4.8 Thinking*; identificador interno `claude-opus-4-8-thinking-high`) |
+| **Uso en el proyecto** | Loader bajo demanda, corrección visual y mejoras de interfaz en portada y perfiles |
+
+Tareas concretas en las que colaboró el agente:
+
+- **Loader bajo demanda (`AppLoader`):** pantalla completa con logo Funky y **"Cargando"** solo cuando hay una carga real (API, etc.), no en cada cambio de ruta.
+- **Avatares Funko del equipo:** ajustar la visualización de las imágenes en portada y páginas individuales para que no se vean cortadas (contenedor, `object-fit`, padding y rutas en `public/img/`).
+- **Bitácora:** reemplazar párrafos por una **línea de tiempo** vertical con hitos del TP1 al TP2.
+- **Portada principal:** animaciones en el **logo** y en el texto **"Funky Collector Team"** (degradado y efectos) para destacar el hero de la home.
+
+#### Equipo — ChatGPT
+
+Se utilizó **ChatGPT** como asistente para tareas puntuales y destrabar problemas técnicos durante la migración de HTML/CSS/JS vanilla a una arquitectura por componentes en React.
 
 Por ejemplo:
 
-- Ayudó a transformar la estructura original en componentes reutilizables y a dividir mejor responsabilidades entre `App`, las páginas y los bloques de contenido;
-- Colaboró en la adaptación de la navegación con **React Router**, especialmente en rutas dinámicas para las páginas individuales de cada integrante;
-- Sirvió para revisar y corregir errores de implementación que aparecían durante la migración, como referencias a assets, clases CSS o detalles de renderizado;
-- Fue útil para proponer ajustes pequeños de CSS cuando algún bloque no se veía alineado, cuando el layout rompía en pantallas chicas o cuando había que igualar estilos entre portada y páginas internas;
+- Transformar la estructura original en componentes reutilizables y repartir responsabilidades entre `App`, las páginas y los bloques de contenido;
+- Adaptar la navegación con **React Router**, incluidas rutas dinámicas para los perfiles de integrantes;
+- Revisar errores de implementación (assets, clases CSS, renderizado);
+- Proponer ajustes de CSS cuando el layout se rompía en pantallas chicas o había que unificar estilos entre portada e internas.
+- Crear el **logo del equipo Funky Collector Team** (`src/assets/funky-logo.png`) combinando los avatares Funko de cada integrante en una sola pieza gráfica para sidebar, loader y portada.
 
-### Imágenes y Avatares
+### Imágenes y avatares
 
-Los avatares Funko de los integrantes fueron generados con **ChatGPT** a partir de fotos de referencia y luego integrados manualmente al proyecto como imágenes locales.
+Los avatares Funko de los integrantes fueron generados con **ChatGPT** a partir de fotos de referencia y luego integrados manualmente al proyecto como imágenes locales en `public/img/`.
 
-Prompt utilizado como base:
+También se utilizó **ChatGPT** para diseñar el **logo de Funky Collector Team**, uniendo en una misma composición los cuatro avatares Funko del equipo. Ese archivo se guardó como `funky-logo.png` y se usa en el sidebar, el loader de entrada y el hero de la portada principal.
+
+**Prompt base para los avatares:**
 
 > "Generá cuatro avatares estilo Funko Pop, tomando como referencia las siguientes imágenes, con estética colorida, fondo simple y rasgos diferenciados. Cada personaje debe verse como una figura de colección y vestimenta inspirada en un perfil tecnológico"
 
-Luego se adaptaron los archivos para que encajaran con la identidad visual de la portada y las páginas individuales del proyecto.
+**Prompt literal para el logo del equipo:**
+
+> "hacer un logo estilo funkos que quede bien con estos colores y estilos de este sitio web"
+
+Se adjuntó una **captura de la portada** del proyecto como referencia visual para que la IA respetara la paleta y la estética del sitio (tema oscuro, acentos neón y estilo coleccionable).
+
 
 ---
 
