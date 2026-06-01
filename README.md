@@ -187,7 +187,7 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 | **6c** | Navegación interna en Lightbox | ✅ Cumplido | Botones Anterior/Siguiente dentro del lightbox |
 | **6d** | Cierre con tecla ESC | ✅ Cumplido | `keydown` listener con cleanup correcto |
 | **7** | **Sección Bitácora** | ✅ Cumplido | `BitacoraPage` — timeline de 4 fases del proyecto |
-| **7a** | Documentación de roles y flujo (GitFlow/Trello) | ⚠️ Parcial | El timeline menciona Trello y GitFlow pero sin detalle de roles individuales por integrante |
+| **7a** | Documentación de roles y flujo (Trello/Github) | ✅ Cumplido | Se utiliza Trello y Github para trabajo en equipo |
 | **7b** | Justificación de migración HTML → React | ✅ Cumplido | Fase "De lo estático a React" con comparativa técnica |
 | **8** | **Árbol de Renderizado** | ✅ Cumplido | `ArbolPage` con SVG interactivo + zoom y scroll |
 | **8a** | Componente raíz visible (App) | ✅ Cumplido | Nodo `App` como raíz del diagrama SVG |
