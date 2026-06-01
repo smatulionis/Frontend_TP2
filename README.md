@@ -208,33 +208,28 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 | **R8** | Link al deploy | ⚠️ Pendiente | Completar tras publicar en Vercel |
 | **R9** | Evolución del proyecto | ✅ Cumplido | Tabla comparativa TP1 → TP2 |
 
-### Uso de Inteligencia Artificial
-
-| # | Requerimiento | Estado |
-|---|---|---|
-| Listado de herramientas | ⚠️ Pendiente | Completar con los modelos usados en TP2 |
-| Uso en contenido y código | ⚠️ Pendiente | Detallar qué se generó con IA en esta entrega |
-| Imágenes / avatares | ⚠️ Pendiente | Indicar si los Funko se generaron con IA y con qué modelo |
-
 ---
 
-## Uso de Inteligencia Artificial
+### Uso Inteligencia Artificial
 
-> _Completar con las herramientas y modelos utilizados durante el desarrollo del TP2. Ejemplo:_
+Durante la migración a React se utilizó **Chatgpt** como asistente de desarrollo para acelerar tareas puntuales y destrabar problemas técnicos, especialmente en la reorganización del código desde la versión original en HTML/CSS/JS hacia una arquitectura por componentes.
 
-| Herramienta | Integrante | Uso |
-|---|---|---|
-| Claude (Anthropic) | — | — |
-| ChatGPT | — | — |
-| Cursor / Copilot | — | — |
+Por ejemplo:
 
-### Uso en Contenido y Código
-
-> _Describir aquí: qué secciones o componentes se desarrollaron con asistencia de IA, en qué problemas ayudó (debugging, lógica, CSS), y qué fue autoría propia._
+- Ayudó a transformar la estructura original en componentes reutilizables y a dividir mejor responsabilidades entre `App`, las páginas y los bloques de contenido;
+- Colaboró en la adaptación de la navegación con **React Router**, especialmente en rutas dinámicas para las páginas individuales de cada integrante;
+- Sirvió para revisar y corregir errores de implementación que aparecían durante la migración, como referencias a assets, clases CSS o detalles de renderizado;
+- Fue útil para proponer ajustes pequeños de CSS cuando algún bloque no se veía alineado, cuando el layout rompía en pantallas chicas o cuando había que igualar estilos entre portada y páginas internas;
 
 ### Imágenes y Avatares
 
-> _Indicar si los avatares Funko fueron generados con IA, con qué herramienta y qué prompt se utilizó._
+Los avatares Funko de los integrantes fueron generados con **ChatGPT** a partir de fotos de referencia y luego integrados manualmente al proyecto como imágenes locales.
+
+Prompt utilizado como base:
+
+> "Generá cuatro avatares estilo Funko Pop, tomando como referencia las siguientes imagenes, con estética colorida, fondo simple y rasgos diferenciados. Cada personaje debe verse como una figura de colección y vestimenta inspirada en un perfil tecnológico"
+
+Luego se adaptaron los archivos para que encajaran con la identidad visual de la portada y las páginas individuales del proyecto.
 
 ---
 
