@@ -1,6 +1,6 @@
 # Grupo 6 — Proyecto Frontend TP2
 
-> 🚀 **Deploy:** _[Enlace Vercel — completar tras el deploy]_
+> 🚀 **Deploy:** https://frontend-tp-2.vercel.app/
 > 📦 **Repositorio:** _[Enlace GitHub — completar]_
 
 ---
@@ -141,8 +141,7 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 
 ## Enlace al Proyecto Desplegado
 
-> 🔗 _[URL de Vercel — completar tras el deploy]_
-
+> 🔗 https://frontend-tp-2.vercel.app/
 ---
 
 ## Evolución respecto al TP1
@@ -201,14 +200,14 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 
 | # | Requerimiento | Estado | Notas |
 |---|---|---|---|
-| **R1** | Título del proyecto con link al deploy | ⚠️ Pendiente | Falta completar la URL de Vercel |
+| **R1** | Título del proyecto con link al deploy | ✅
 | **R2** | Descripción del objetivo | ✅ Cumplido | Incluida arriba |
 | **R3** | Integrantes con links a GitHub | ✅ Cumplido | Tabla completa |
 | **R4** | Tecnologías utilizadas | ✅ Cumplido | Lista detallada |
 | **R5** | Estructura de archivos | ✅ Cumplido | Árbol de carpetas |
 | **R6** | Guía de estilos (colores, tipografías, iconos) | ✅ Cumplido | Tabla de variables CSS + links |
 | **R7** | Funciones dinámicas y componentes clave + capturas | ⚠️ Pendiente | Descripción completa; **faltan capturas de pantalla** |
-| **R8** | Link al deploy | ⚠️ Pendiente | Completar tras publicar en Vercel |
+| **R8** | Link al deploy | ✅ | Completar tras publicar en Vercel |
 | **R9** | Evolución del proyecto | ✅ Cumplido | Tabla comparativa TP1 → TP2 |
 
 ---
