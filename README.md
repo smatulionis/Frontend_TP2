@@ -1,7 +1,7 @@
 # Grupo 6 — Proyecto Frontend TP2
 
 > 🚀 **Deploy:** https://frontend-tp-2.vercel.app/
-> 📦 **Repositorio:** _[Enlace GitHub — completar]_
+> 📦 **Repositorio:** https://github.com/smatulionis/Frontend_TP2
 
 ---
 
@@ -135,7 +135,7 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 
 ## Capturas de Pantalla
 
-> _Completar con capturas una vez desplegado en Vercel. Incluir: portada con grid de tarjetas, un perfil individual, el explorador con búsqueda activa, la API con personajes, la galería con lightbox abierto y el árbol de renderizado._
+
 
 ---
 
@@ -189,7 +189,7 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 | **6c** | Navegación interna en Lightbox | ✅ Cumplido | Botones Anterior/Siguiente dentro del lightbox |
 | **6d** | Cierre con tecla ESC | ✅ Cumplido | `keydown` listener con cleanup correcto |
 | **7** | **Sección Bitácora** | ✅ Cumplido | `BitacoraPage` — timeline de 4 fases del proyecto |
-| **7a** | Documentación de roles y flujo de trabajo | ⚠️ Parcial | Timeline con Trello y GitHub; sin detalle de roles individuales por integrante |
+| **7a** | Documentación de roles y flujo de trabajo 
 | **7b** | Justificación de migración HTML → React | ✅ Cumplido | Fase "De lo estático a React" con comparativa técnica |
 | **8** | **Árbol de Renderizado** | ✅ Cumplido | `ArbolPage` con SVG interactivo + zoom y scroll |
 | **8a** | Componente raíz visible (App) | ✅ Cumplido | Nodo `App` como raíz del diagrama SVG |
@@ -206,7 +206,6 @@ Grid de 12 imágenes con Lightbox implementado vía `createPortal`. Funciones: z
 | **R4** | Tecnologías utilizadas | ✅ Cumplido | Lista detallada |
 | **R5** | Estructura de archivos | ✅ Cumplido | Árbol de carpetas |
 | **R6** | Guía de estilos (colores, tipografías, iconos) | ✅ Cumplido | Tabla de variables CSS + links |
-| **R7** | Funciones dinámicas y componentes clave + capturas | ⚠️ Pendiente | Descripción completa; **faltan capturas de pantalla** |
 | **R8** | Link al deploy | ✅ | Completar tras publicar en Vercel |
 | **R9** | Evolución del proyecto | ✅ Cumplido | Tabla comparativa TP1 → TP2 |
 
