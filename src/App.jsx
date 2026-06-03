@@ -240,6 +240,66 @@ const melodySocialLinks = [
   },
 ];
 
+const sebastianVitcopSkills = [
+  { name: "HTML5", level: 85, note: "Estructura semántica y accesible." },
+  { name: "CSS3 / Responsive", level: 80, note: "Layouts, variables y media queries." },
+  { name: "JavaScript", level: 60, note: "Interactividad y lógica de interfaz." },
+  { name: "Git / GitHub", level: 72, note: "Versionado y trabajo colaborativo." },
+  { name: "React", level: 55, note: "Componentes y navegación SPA." },
+];
+
+const sebastianVitcopProjects = [
+  {
+    title: "Tarjeta personal TP1",
+    summary: "Página individual con toggle de detalles, foto circular y paleta compartida del equipo.",
+    stack: ["HTML", "CSS", "JavaScript"],
+    focus: "Trabajé la estructura semántica y resolví conflictos de estilos entre integrantes.",
+  },
+  {
+    title: "Migración a React TP2",
+    summary: "Perfil propio migrado a componente React con rutas dinámicas y design system compartido.",
+    stack: ["React", "React Router", "CSS"],
+    focus: "Me enfoqué en reutilizar los componentes del equipo y mantener la identidad visual.",
+  },
+  {
+    title: "Explorador de datos",
+    summary: "Módulo de búsqueda y filtrado en tiempo real sobre colección musical en JSON.",
+    stack: ["React", "JSON", "useState"],
+    focus: "Implementé filtrado por texto e inicio de palabra combinado con selector de género.",
+  },
+];
+
+const sebastianVitcopTechStack = [
+  { name: "HTML5", tone: "sky", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" },
+  { name: "CSS3", tone: "mint", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" },
+  { name: "JavaScript", tone: "peach", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" },
+  { name: "React", tone: "lilac", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" },
+  { name: "GitHub", tone: "sky", icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" },
+];
+
+const sebastianVitcopSocialLinks = [
+  {
+    label: "GitHub",
+    handle: "@Sebasvitcop",
+    href: "https://github.com/Sebasvitcop",
+    tone: "sky",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
+  },
+  {
+    label: "LinkedIn",
+    handle: "Perfil profesional",
+    href: "#",
+    tone: "mint",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg",
+  },
+  {
+    label: "Instagram",
+    handle: "@sebasvitcop",
+    href: "#",
+    tone: "peach",
+    icon: "/img/social/instagram.svg",
+  },
+];
 
 const lucreciaMoodData = {
   aventurero: {
@@ -1528,6 +1588,20 @@ function MemberInfoGrid({ items }) {
 
 function SebastianVitcopPage({ member }) {
   const [showExtra, setShowExtra] = useState(false);
+  const [activeProject, setActiveProject] = useState(0);
+  const currentProject = sebastianVitcopProjects[activeProject];
+
+  function goToPreviousProject() {
+    setActiveProject((value) =>
+      value === 0 ? sebastianVitcopProjects.length - 1 : value - 1,
+    );
+  }
+
+  function goToNextProject() {
+    setActiveProject((value) =>
+      value === sebastianVitcopProjects.length - 1 ? 0 : value + 1,
+    );
+  }
 
   return (
     <PageShell
@@ -1536,24 +1610,106 @@ function SebastianVitcopPage({ member }) {
       title={member.name}
       tagline="Mi nombre es Sebastián Vitcop. Soy estudiante de la Tecnicatura en Desarrollo Web y apasionado por la tecnología. Me gusta mucho el área de datos y me estoy formando en paralelo con cursos sobre la temática. En un futuro me gustaría trabajar en el sector de Data de alguna empresa. Además, me gusta hacer deporte y pasar tiempo al aire libre."
     >
-      <MemberInfoGrid
-        items={[
-          { title: "Ubicación", content: "Buenos Aires, Argentina" },
-          { title: "Edad", content: "28 años" },
-          {
-            title: "Habilidades",
-            content: ["HTML", "CSS", "JavaScript (inicial)", "Git / GitHub"],
-          },
-          {
-            title: "Películas favoritas",
-            content: ["Interstellar", "The Social Network", "Moneyball"],
-          },
-          {
-            title: "Discos musicales favoritos",
-            content: ["Rocks — Aerosmith", "Honestidad Brutal — Andrés Calamaro", "Toys in the Attic — Aerosmith"],
-          },
-        ]}
-      />
+      <div className="content-grid">
+
+        <article className="surface-card">
+          <h2>Datos</h2>
+          <div className="content-grid member-mini-grid">
+            <div className="mini-block">
+              <h3>Ubicación actual</h3>
+              <p>Buenos Aires, Argentina</p>
+            </div>
+            <div className="mini-block">
+              <h3>Edad</h3>
+              <p>28 años</p>
+            </div>
+          </div>
+        </article>
+
+        <article className="surface-card">
+          <h2>Habilidades Técnicas</h2>
+          <SkillBarList skills={sebastianVitcopSkills} />
+        </article>
+
+        <article className="surface-card">
+          <div className="section-heading-row">
+            <h2>Proyectos Destacados</h2>
+            <div className="carousel-controls" aria-label="Controles del carrusel">
+              <button type="button" className="carousel-btn" onClick={goToPreviousProject}>
+                Anterior
+              </button>
+              <button type="button" className="carousel-btn" onClick={goToNextProject}>
+                Siguiente
+              </button>
+            </div>
+          </div>
+          <section className="project-carousel" aria-live="polite">
+            <div className="project-carousel-card">
+              <span className="project-carousel-step">
+                Proyecto {activeProject + 1} de {sebastianVitcopProjects.length}
+              </span>
+              <h3>{currentProject.title}</h3>
+              <p>{currentProject.summary}</p>
+              <p>{currentProject.focus}</p>
+              <ul className="detail-list pill-list">
+                {currentProject.stack.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="carousel-dots" aria-label="Selección de proyecto">
+              {sebastianVitcopProjects.map((project, index) => (
+                <button
+                  key={project.title}
+                  type="button"
+                  className={`carousel-dot${index === activeProject ? " is-active" : ""}`}
+                  aria-label={`Ver ${project.title}`}
+                  aria-pressed={index === activeProject}
+                  onClick={() => setActiveProject(index)}
+                />
+              ))}
+            </div>
+          </section>
+        </article>
+
+        <article className="surface-card">
+          <h2>Tech Stack</h2>
+          <div className="tech-stack-grid">
+            {sebastianVitcopTechStack.map((tech) => (
+              <article key={tech.name} className={`tech-icon-card tech-icon-card--${tech.tone}`}>
+                <span className="tech-icon-glyph" aria-hidden="true">
+                  <img src={tech.icon} alt="" className="tech-icon-img" loading="lazy" />
+                </span>
+                <strong>{tech.name}</strong>
+              </article>
+            ))}
+          </div>
+        </article>
+
+        <article className="surface-card">
+          <h2>Redes y Enlaces</h2>
+          <div className="social-media-grid">
+            {sebastianVitcopSocialLinks.map((item) => (
+              <a
+                key={item.label}
+                className={`social-media-btn social-media-btn--${item.tone}`}
+                href={item.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <span className="social-media-icon" aria-hidden="true">
+                  <img src={item.icon} alt="" className="social-media-icon-img" loading="lazy" />
+                </span>
+                <span className="social-media-copy">
+                  <span>{item.label}</span>
+                  <small>{item.handle}</small>
+                </span>
+              </a>
+            ))}
+          </div>
+        </article>
+
+      </div>
 
       <article className="surface-card member-toggle-card">
         <div className="toggle-row">
@@ -1568,7 +1724,6 @@ function SebastianVitcopPage({ member }) {
             {showExtra ? "Ocultar detalles" : "Mostrar más sobre mí"}
           </button>
         </div>
-
         {showExtra ? (
           <div id="sv-extra-react" className="detail-grid detail-grid--animated">
             <article className="detail-card">
@@ -1598,6 +1753,7 @@ function SebastianVitcopPage({ member }) {
           </div>
         ) : null}
       </article>
+
     </PageShell>
   );
 }
